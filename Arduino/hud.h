@@ -24,6 +24,7 @@ class Hud {
         Hud();
         void init();
         void render();
+        void set_horizon(float pitch, float roll);
 
     private:
         Adafruit_SSD1306 display;
@@ -33,11 +34,14 @@ class Hud {
         int inner_reticle_counter = 0;
         int inner_reticle_length=7;
 
+        float pitch,roll = 0;
+
         int draw_position = 0;
         int i = 1;
 
         PositionStruct reticule_data[52];
         PositionStruct inner_reticule_data[28];
+
 
 };
 

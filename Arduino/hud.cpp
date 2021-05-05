@@ -22,11 +22,23 @@ void Hud::init() {
     display.display();
 }
 
-
+void Hud::set_horizon(float pitch, float roll){
+    this->pitch = pitch;
+    this->roll = roll;
+}
 
 void Hud::render() {
     // run a render cycle (in the loop of the main arduino)
     display.clearDisplay();
+
+    // Draw horizon
+    int height = 32 + 3.5 * pitch;
+    int left_height = height - 3.5*roll;
+    int right_height = height + 3.5*roll;
+    display.drawLine(48, left_height, 79, right_height, SSD1306_WHITE);
+    display.fillRect(56,24, 16, 16, SSD1306_BLACK); // start, w and h
+
+    // FIXME: pitch only
 
     // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     // Outer reticule animation 
